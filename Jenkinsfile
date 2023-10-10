@@ -25,8 +25,22 @@ pipeline {
         stage('Result') {
             steps {
                 echo "Result Started"
-                junit '**/test-output/emailable-report.html'
+                step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
                 echo "Result End"
+            }
+        }
+        stage('Install') {
+            steps {
+                echo "Install Started"
+                sh(/mvn -file pom.xml install/)
+                echo "Install End"
+            }
+        }
+        stage('Install') {
+            steps {
+                echo "Deploy Started"
+                sh(/mvn -file pom.xml deploy/)
+                echo "Deploy End"
             }
         }
     }
