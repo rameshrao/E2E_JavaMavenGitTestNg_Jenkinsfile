@@ -47,5 +47,10 @@ pipeline {
                 echo "Deploy End"
             }
         }
+        stage('Thank you') {
+            steps {
+                echo "Thank you"
+            }
+        }
     }
 }
