@@ -36,7 +36,7 @@ pipeline {
                 echo "Install End"
             }
         }
-        stage('Install') {
+        stage('Deploy') {
             steps {
                 echo "Deploy Started"
                 sh(/mvn -file pom.xml deploy/)
